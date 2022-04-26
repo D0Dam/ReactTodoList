@@ -1,16 +1,27 @@
 import React from "react";
+import DoListItem from "./DoListItem";
 
-const DoList = () => {
+const DoList = ({ todoList, goDidRoot }) => {
+	console.log(todoList);
+
+	const goDid = (todo) => {
+		goDidRoot(todo);
+	};
 	return (
 		<div>
 			<div className="doListTitle">해야할 일</div>
 
-			<li className="doList">
-				<div className="doListItem">
-					<div>컴퓨터 하기</div>
-					<button>check!</button>
-				</div>
-			</li>
+			<div className="doList">
+				{todoList &&
+					todoList.map((todo) => (
+						<DoListItem
+							todo={todo}
+							todoId={todo.id}
+							goDid={goDid}
+							key={todo.id}
+						/>
+					))}
+			</div>
 		</div>
 	);
 };

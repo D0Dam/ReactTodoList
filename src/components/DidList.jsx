@@ -1,16 +1,20 @@
 import React from "react";
+import DidListItem from "./DidListItem";
 
-const DidList = () => {
+const DidList = ({ didList, deleteThisRoot }) => {
+	const deleteThis = (did) => {
+		deleteThisRoot(did);
+	};
 	return (
 		<div>
 			<div className="doListTitle">끝난 일</div>
 
-			<li className="doList">
-				<div className="doListItem">
-					<div>잠을 야무지게 자기</div>
-					<button>삭제</button>
-				</div>
-			</li>
+			<div className="doList">
+				{didList &&
+					didList.map((did) => (
+						<DidListItem did={did} key={did.id} deleteThis={deleteThis} />
+					))}
+			</div>
 		</div>
 	);
 };
