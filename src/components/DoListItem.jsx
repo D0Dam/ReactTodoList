@@ -1,4 +1,22 @@
 import React from "react";
+import styled from "styled-components";
+
+const ListItem = styled.div`
+	display: flex;
+	width: 20rem;
+	height: 1.6rem;
+	justify-content: space-between;
+	margin: 1rem 0 1rem 0;
+	font-size: large;
+`;
+
+const DoText = styled.div`
+	border-bottom: 0.2rem solid #dcd6f0;
+`;
+
+const Button = styled.button`
+	width: 3.2rem;
+`;
 
 const DoListItem = ({ todo, goDid, todoId }) => {
 	const onClick = () => {
@@ -6,10 +24,10 @@ const DoListItem = ({ todo, goDid, todoId }) => {
 		goDid(todo);
 	};
 	return (
-		<div className="doListItem" id={todoId}>
-			<div>{todo.todo}</div>
-			<button onClick={onClick}>check!</button>
-		</div>
+		<ListItem className="doListItem" id={todoId}>
+			<DoText>{todo.todo}</DoText>
+			<Button onClick={onClick}>check!</Button>
+		</ListItem>
 	);
 };
 

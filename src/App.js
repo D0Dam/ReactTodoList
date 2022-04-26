@@ -14,26 +14,31 @@ const TodoTitle = styled.div`
 `;
 const Contents = styled.div`
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 24rem 24rem;
+	height: 100%;
 `;
 
 function App() {
 	const [todos, setTodos] = useState([
 		{
-			id: 1,
-			todo: "예시입니다.",
+			id: 0,
+			todo: "해야할 일 예시입니다.",
 			check: false,
 		},
 	]);
 	const [dids, setDids] = useState([
 		{
-			id: 0,
-			todo: "did의 예시입니다.",
+			id: 1,
+			todo: "끝난 일 예시입니다.",
 			check: true,
 		},
 	]);
 	const todoId = useRef(2);
 	const getTodo = (value) => {
+		if (value == "") {
+			alert("내용이 없습니다!");
+			return;
+		}
 		const newTodo = { id: todoId.current, todo: value, check: false };
 		setTodos(todos.concat(newTodo));
 		todoId.current += 1;
